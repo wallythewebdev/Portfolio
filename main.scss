@@ -1,0 +1,252 @@
+// FONTS 
+
+@font-face {
+    font-family: lemonMilk;
+    src: url(font/LemonMilk.otf) format('opentype');
+}
+
+
+// VARS 
+
+$col_light: #EEEEEE;
+$col_dark: #2E2E2E;
+
+
+$backgroundCOLOR: (#000);
+
+
+
+// MIXINS
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin hover{
+    transition: 0.4s ease-in-out;
+    transform: scale(1.1) translate(-50%,-50%);
+}
+
+@mixin center_page {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+@mixin center_X {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+@mixin row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+@mixin column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin background_img($img){
+    background-image: url(img/icons/#{$img});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@mixin social($icon) {
+    background: url(img/social/#{$icon});
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@mixin main_content {
+    width: 80%;
+    height: 400px;
+    display: block;
+}
+
+@mixin icon_content{
+    width: 75px;
+    height: 75px;
+    display: block;
+}
+
+
+// CLIENTS PAGE
+
+@mixin clients($img) {
+    height: 160px;
+    display: block;
+    background-image: url(img/clients/#{$img});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+// MIXIN ANIMATIONS
+
+// fade in
+
+@mixin fade_in_up ($fade_from:0, $fade_to:1, $time: 1.2){
+    animation-fill-mode: forwards;
+    animation: fade_in #{$time}s ease-in-out;
+    @keyframes fade_in {
+        0%{
+            opacity: #{$fade_from};
+            transform: translateY(5%, -50%);
+        }
+        100%{
+            opacity: #{$fade_to};
+            transform: translateY(0%, -50%);
+        }
+        
+    }
+}
+
+@mixin exit($direction){
+    transition: 0.5s ease-in-out;
+    transform: translateX(#{$direction});
+    
+}
+
+@mixin translateUp($value){
+    position: relative;
+    transition: 0.5s ease-in-out;
+    transform: translateY(#{$value});
+    animation-delay: 1s;
+}
+
+
+// SCSS starts below -- 
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color: $col_dark;
+        div{
+            &.container{
+                display: flex;
+                flex-direction: column;
+                @include center_page;
+                span{
+                    @include background_img('title_background.svg');
+                    @include main_content;
+                    @include fade_in_up;
+                    @include center_X;
+                }
+                div{
+                    &.social_links{
+                        @include row;
+                        a{
+                            padding: 0 20px;
+                            &.gitHub{
+                                @include social('githubBlack.svg');
+                                @include icon_content;
+                                @include fade_in_up;
+                            }
+                            &.stackOverflow{
+                                @include social('stackOverflow.svg');
+                                @include icon_content;
+                                @include fade_in_up;
+                            }
+                        }
+                    }
+                }   
+            }
+        }
+        
+    }
+
+
+    section{
+        overflow: hidden;
+        background-color: $col_light;
+        color: $col_dark;
+        font-family: lemonMilk;
+        position: relative;
+        height: 100vh;
+        div{
+            @include column;
+            max-height: 2000px;
+            height: 33.3333%;
+            h2{
+                font-size: 3.5em;
+            }
+            h2, p, h3, a {
+                margin: 15px 0;
+                text-align: left;
+                padding: 0 20px;
+            }
+
+        }
+        .exitL {
+            
+            @include exit(-100%);
+            overflow: hidden;
+            
+        }
+        .exitR {
+            @include exit(100%);
+            overflow: hidden;
+        }
+        .clients{
+            background-color: lightcoral;
+            animation-fill-mode: forwards;
+        }
+        .projects{
+            background-color: lightseagreen;
+            animation-fill-mode: forwards;
+        } .upProject{
+            
+            @include translateUp(-100%);
+        }
+        .skill{
+            animation-fill-mode: forwards;
+        } .upSkill {
+            @include translateUp(-200%);
+        }
+
+        .skills_list{
+            opacity: 0;
+            height: 0;
+        }
+        .skills_list_show{
+            max-height: 1000px;
+            @include fade_in_up;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    footer{
+        height: 50vh;
+        background-color: $col_dark;
+        color: $col_light;
+        font-family: lemonMilk;
+        text-align: center;
+
+        .copyRight {
+            position: relative;
+            top: calc(100% - 10%);
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    
+
