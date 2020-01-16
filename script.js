@@ -143,7 +143,7 @@ const controller = (function(){
                         document.querySelector('.clients').remove();
                         document.querySelector('.projects').remove();
                         // below needs to be a seperate function for loading in the sub section of the headers
-                        // document.querySelector('.skills_list').classList.add('skills_list_show');
+                        document.querySelector('.skills_list').classList.add('skills_list_show');
                     },1000)
                     console.log('Clients have been clicked');
                 }
