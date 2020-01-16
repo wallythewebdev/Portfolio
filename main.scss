@@ -12,6 +12,16 @@ $col_light: #EEEEEE;
 $col_dark: #2E2E2E;
 
 
+// color pallets
+
+$col_A: #B22028;
+$col_B: #B2AA20;
+$col_C: #A920B2;
+$col_D: #2085B2;
+$col_E: #20B275;
+
+
+
 $backgroundCOLOR: (#000);
 
 
@@ -78,6 +88,8 @@ $backgroundCOLOR: (#000);
     height: 75px;
     display: block;
 }
+
+
 
 
 // CLIENTS PAGE
@@ -186,6 +198,7 @@ header{
             @include column;
             max-height: 2000px;
             height: 33.3333%;
+            position: relative;
             h2{
                 font-size: 3.5em;
             }
@@ -194,8 +207,41 @@ header{
                 text-align: left;
                 padding: 0 20px;
             }
+            .exitButton{
+                display: block;
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                margin: 15px 20px;
+                background-image: url(img/icons/backButton.png);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                opacity: 0;
 
-        }
+                transition: 0.5s ease-in-out;
+                &_show{
+                    opacity: 1;
+                }
+                
+            }
+            
+            }
+            .projects{
+                h2{
+                    font-size: 3rem;
+                }
+            }
+        
+            .heading_item{
+                .top_menu{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+            }
+            
         .exitL {
             
             @include exit(-100%);
@@ -231,6 +277,40 @@ header{
             max-height: 1000px;
             @include fade_in_up;
             animation-fill-mode: forwards;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            h3{
+                height: 180px;
+                width: 50%;
+                line-height: 180px;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                font-size: 2.5rem;
+                color: #EEE;
+                &:nth-child(1){
+                    background-color: $col_A;
+                }
+                &:nth-child(2){
+                    background-color: $col_B;
+                }
+                &:nth-child(3){
+                    background-color: $col_C;
+                }
+                &:nth-child(4){
+                    background-color: $col_D;
+                }
+                &:nth-child(5){
+                    background-color: $col_E;
+                }
+                &:nth-child(6){
+                    font-size: 1em;
+                    line-height: 180px;
+                }
+                
+            }
         }
     }
 

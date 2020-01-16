@@ -94,13 +94,35 @@ section {
     display: flex;
     flex-direction: column;
     max-height: 2000px;
-    height: 33.3333%; }
+    height: 33.3333%;
+    position: relative; }
     section div h2 {
       font-size: 3.5em; }
     section div h2, section div p, section div h3, section div a {
       margin: 15px 0;
       text-align: left;
       padding: 0 20px; }
+    section div .exitButton {
+      display: block;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      margin: 15px 20px;
+      background-image: url(img/icons/backButton.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0;
+      transition: 0.5s ease-in-out; }
+      section div .exitButton_show {
+        opacity: 1; }
+  section .projects h2 {
+    font-size: 3rem; }
+  section .heading_item .top_menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; }
   section .exitL {
     transition: 0.5s ease-in-out;
     transform: translateX(-100%);
@@ -134,7 +156,10 @@ section {
     max-height: 1000px;
     animation-fill-mode: forwards;
     animation: fade_in 1.2s ease-in-out;
-    animation-fill-mode: forwards; }
+    animation-fill-mode: forwards;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; }
 @keyframes fade_in {
   0% {
     opacity: 0;
@@ -142,6 +167,29 @@ section {
   100% {
     opacity: 1;
     transform: translateY(0%, -50%); } }
+    section .skills_list_show h3 {
+      height: 180px;
+      width: 50%;
+      line-height: 180px;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 2.5rem;
+      color: #EEE; }
+      section .skills_list_show h3:nth-child(1) {
+        background-color: #B22028; }
+      section .skills_list_show h3:nth-child(2) {
+        background-color: #B2AA20; }
+      section .skills_list_show h3:nth-child(3) {
+        background-color: #A920B2; }
+      section .skills_list_show h3:nth-child(4) {
+        background-color: #2085B2; }
+      section .skills_list_show h3:nth-child(5) {
+        background-color: #20B275; }
+      section .skills_list_show h3:nth-child(6) {
+        font-size: 1em;
+        line-height: 180px; }
+
 footer {
   height: 50vh;
   background-color: #2E2E2E;
