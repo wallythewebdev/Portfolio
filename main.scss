@@ -70,6 +70,14 @@ $backgroundCOLOR: (#000);
     background-size: contain;
 }
 
+@mixin background_img_clients($img){
+    background-image: url(img/clients/#{$img});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40vh;
+}
+
 @mixin social($icon) {
     background: url(img/social/#{$icon});
     background-position: center;
@@ -254,6 +262,8 @@ header{
         .clients{
             background-color: lightcoral;
             animation-fill-mode: forwards;
+            
+           
         }
         .projects{
             background-color: lightseagreen;
@@ -309,6 +319,32 @@ header{
                     line-height: 180px;
                 }
                 
+            }
+        }
+        .clients_list{
+            .client{
+                @include fade_in_up();
+                height: 20vh;
+                color: #EEE;
+                a{
+                    display: none;
+                }
+                h3{
+                    display: none;
+                }
+                
+            }
+            #AWP{
+                @include background_img_clients('awp_dsktp.jpg');
+            }
+            #KeaTek{
+                @include background_img_clients('keatek_dsktp.jpg');
+            }
+            #MrNobodies{
+                @include background_img_clients('nobodies_dsktp.jpg');
+            }
+            #trippy{
+                @include background_img_clients('trippy_dsktp.jpg');
             }
         }
     }

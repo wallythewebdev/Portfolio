@@ -1,0 +1,1 @@
+this dir is for the gifs from clients sites, its a work in progress and me writing about it like this is allot more to do with practice using the terminal, but hey these are the things that need to be done

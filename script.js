@@ -17,6 +17,36 @@ let ui_controlls = (function(){
             return elements;
     };
 
+
+        function cloneClients(){
+            // get the clietns and clone themm into a variable
+
+            var clientList = document.querySelectorAll('.clients_list')[0].cloneNode(true)
+
+            clients.push(clientList);
+
+        }
+
+        function build_Clients(){
+            document.querySelector('.clients').appendChild(clients[0])
+        }
+
+        
+        function cloneSkils(){
+            // get the clietns and clone themm into a variable
+
+            var skill_list = document.querySelectorAll('.skills_list')[0].cloneNode(true)
+
+            skills.push(skill_list);
+
+        }
+
+        function build_skills(){
+            document.querySelector('.skills').appendChild(skills[0]);
+        }
+
+
+
         function rebuildUI(){
             
            
@@ -45,6 +75,10 @@ let ui_controlls = (function(){
 
         let elements = [];
 
+        let clients = [];
+
+        let skills = [];
+
         let subs = [];
 
     return {
@@ -58,6 +92,22 @@ let ui_controlls = (function(){
             console.log(elements)
             return elements;
 
+        },
+
+        getClients: function(){
+            cloneClients();
+        },
+        
+        pushClients: function(){
+            build_Clients();
+        },
+
+        getskills: function(){
+            cloneSkils();
+        },
+        
+        pushskills: function(){
+            build_skills();
         }
         
     }
@@ -89,6 +139,7 @@ const controller = (function(){
                 document.querySelectorAll('.exitButton').forEach(e=>{
                     e.classList.add('exitButton_show')
                 })
+                ui_controlls.pushClients();
                 
 
                 setTimeout(function(){
@@ -165,6 +216,7 @@ const controller = (function(){
         init: function(){
             eventListeners();
             ui_controlls.getElements();
+            ui_controlls.getClients();
         }
     }
 
