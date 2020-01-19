@@ -206,25 +206,25 @@ section {
     section .clients_list .client h3 {
       display: none; }
   section .clients_list #AWP {
-    background-image: url(img/clients/awp_dsktp.jpg);
+    background-image: url(img/clients/awp_dsktp.JPG);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 40vh; }
   section .clients_list #KeaTek {
-    background-image: url(img/clients/keatek_dsktp.jpg);
+    background-image: url(img/clients/keatek_dsktp.JPG);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 40vh; }
   section .clients_list #MrNobodies {
-    background-image: url(img/clients/nobodies_dsktp.jpg);
+    background-image: url(img/clients/nobodies_dsktp.JPG);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 40vh; }
   section .clients_list #trippy {
-    background-image: url(img/clients/trippy_dsktp.jpg);
+    background-image: url(img/clients/trippy_dsktp.JPG);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
