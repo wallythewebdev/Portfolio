@@ -173,7 +173,7 @@ header{
                 flex-direction: column;
                 @include center_page;
                 span{
-                    @include background_img('title_background.svg');
+                    @include background_img('title_background.png');
                     @include main_content;
                     @include fade_in_up;
                     @include center_X;

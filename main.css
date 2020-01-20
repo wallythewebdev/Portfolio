@@ -24,7 +24,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%); }
     header div.container span {
-      background-image: url(img/icons/title_background.svg);
+      background-image: url(img/icons/title_background.png);
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
