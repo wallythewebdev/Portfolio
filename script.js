@@ -23,6 +23,9 @@ let ui_controlls = (function(){
 
             var clientList = document.querySelectorAll('.clients_list')[0].cloneNode(true)
 
+            clientList.classList.add('clients_list_show');
+            clientList.classList.remove('clients_list');
+
             clients.push(clientList);
 
         }

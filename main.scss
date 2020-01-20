@@ -78,6 +78,13 @@ $backgroundCOLOR: (#000);
     height: 40vh;
 }
 
+@mixin background_img_projects($img){
+    background-image: url(img/projects/#{$img});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 @mixin social($icon) {
     background: url(img/social/#{$icon});
     background-position: center;
@@ -322,6 +329,9 @@ header{
             }
         }
         .clients_list{
+            display: none;
+        }
+        .clients_list_show{
             .client{
                 @include fade_in_up();
                 height: 20vh;
@@ -347,7 +357,61 @@ header{
                 @include background_img_clients('trippy_dsktp.JPG');
             }
         }
-    }
+
+        .project_list{
+            display: flex;
+            .project{
+                height: 100%;
+                .project_background{
+                    height: 50vh;
+                   
+                }
+                .project_info{
+                    
+
+                    .project_links{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-evenly;
+                        align-items: center;
+                        height: 120px;
+                        .website_link{
+                            a{
+                                font-size: 1.5em;
+                                &:visited {
+                                    color: #2e2e2e;
+                                }
+                            }
+
+                        }
+                        .github_link {
+                            background-image: url(img/social/githubWhite.svg);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                            height: 75px;
+                            width: 85px;
+                            a{
+                                height: 75px;
+                                width: 85px;
+                            }
+                        }
+                    }
+                }
+            }
+            #notables{
+                .project_background{
+                    @include background_img_projects('notables_mobile.JPG')
+                }
+                }
+            #littleLeo{
+                .project_background{
+                    @include background_img_projects('littleLeo.JPG')
+                }
+            }
+        }
+
+        }
 
     footer{
         height: 50vh;
