@@ -23,6 +23,8 @@ let ui_controlls = (function(){
 
             var clientList = document.querySelectorAll('.clients_list')[0].cloneNode(true)
 
+            // if else for this part to stop it from shwoing again once the back button has been hit
+
             clientList.classList.add('clients_list_show');
             clientList.classList.remove('clients_list');
 
@@ -48,6 +50,22 @@ let ui_controlls = (function(){
             document.querySelector('.skills').appendChild(skills[0]);
         }
 
+        function cloneProjects(){
+            // get the clietns and clone themm into a variable
+
+            var projects_list = document.querySelectorAll('.project_list')[0].cloneNode(true)
+
+            projects_list.classList.add('project_list_show');
+            projects_list.classList.remove('project_list');
+
+            projects.push(projects_list);
+
+        }
+
+        function build_projects(){
+            document.querySelector('.projects').appendChild(projects[0]);
+        }
+
 
 
         function rebuildUI(){
@@ -60,9 +78,8 @@ let ui_controlls = (function(){
 
                 section.appendChild(e);
 
-                let exitL, exitR, exitButton_show;
 
-                
+                let exitL, exitR, exitButton_show;     
 
                 document.querySelectorAll('.exitL').forEach(e=>{
                     e.classList.remove('exitL');
@@ -74,6 +91,23 @@ let ui_controlls = (function(){
                         e.classList.remove('exitButton_show');
                 })
             })
+            // If the client section (2rd child) is still part of the rebuild NODE for the
+                // headers then find that child (2nd child) and remove it
+                var clientSection = document.querySelectorAll('.clients')
+                    if(clientSection[0].children.length === 3){
+                        clientSection[0].children[2].remove();
+                    };
+
+                // Same as the above but this time for the projects
+                var projectSection = document.querySelectorAll('.projects')
+                    if(projectSection[0].childElementCount === 3){
+                        projectSection[0].children[2].remove();
+                    };  
+                    
+                // var skillsSection = document.querySelectorAll('.skills')
+                if(skillsSection[0].children.length === 3){
+                    skillsSection[0].children[2].remove();
+                };  
         }
 
         let elements = [];
@@ -81,6 +115,8 @@ let ui_controlls = (function(){
         let clients = [];
 
         let skills = [];
+
+        let projects = [];
 
         let subs = [];
 
@@ -111,6 +147,14 @@ let ui_controlls = (function(){
         
         pushskills: function(){
             build_skills();
+        }, 
+
+        getProjects: function(){
+            cloneProjects();
+        },
+
+        pushProjects: function(){
+            build_projects();
         }
         
     }
@@ -159,6 +203,9 @@ const controller = (function(){
                     ui_controlls.resetUI()
                     return;
                 } else{
+
+                ui_controlls.pushProjects();
+
                 document.querySelector('.clients').classList.add('exitR');
                 document.querySelector('.skills').classList.add('exitL');
                 document.querySelector('.projects').classList.add('upProject')
@@ -220,6 +267,8 @@ const controller = (function(){
             eventListeners();
             ui_controlls.getElements();
             ui_controlls.getClients();
+            ui_controlls.getProjects();
+            
         }
     }
 

@@ -275,7 +275,62 @@ header{
         .projects{
             background-color: lightseagreen;
             animation-fill-mode: forwards;
-        } .upProject{
+            .project_list_show{
+                display: flex;
+                .project{
+                    height: 100%;
+                    .project_background{
+                        height: 50vh;
+                       
+                    }
+                    .project_info{
+                        color: #EEE;
+                        h3 {
+                            font-size: 2em;
+                        }
+                        .project_links{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-evenly;
+                            align-items: center;
+                            height: 120px;
+                            .website_link{
+                                a{
+                                    font-size: 1.5em;
+                                    &:visited {
+                                        color: #2e2e2e;
+                                    }
+                                }
+    
+                            }
+                            .github_link {
+                                background-image: url(img/social/githubWhite.svg);
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: contain;
+                                height: 75px;
+                                width: 85px;
+                                a{
+                                    height: 75px;
+                                    width: 85px;
+                                }
+                            }
+                        }
+                    }
+                }
+                #notables{
+                    .project_background{
+                        @include background_img_projects('notables_mobile.JPG')
+                    }
+                    }
+                #littleLeo{
+                    .project_background{
+                        @include background_img_projects('littleLeo.JPG')
+                    }
+                }
+            }
+        } 
+        .upProject{
             
             @include translateUp(-100%);
         }
@@ -358,63 +413,15 @@ header{
             }
         }
 
+
         .project_list{
-            display: flex;
-            .project{
-                height: 100%;
-                .project_background{
-                    height: 50vh;
-                   
-                }
-                .project_info{
-                    
-
-                    .project_links{
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: space-evenly;
-                        align-items: center;
-                        height: 120px;
-                        .website_link{
-                            a{
-                                font-size: 1.5em;
-                                &:visited {
-                                    color: #2e2e2e;
-                                }
-                            }
-
-                        }
-                        .github_link {
-                            background-image: url(img/social/githubWhite.svg);
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            background-size: contain;
-                            height: 75px;
-                            width: 85px;
-                            a{
-                                height: 75px;
-                                width: 85px;
-                            }
-                        }
-                    }
-                }
-            }
-            #notables{
-                .project_background{
-                    @include background_img_projects('notables_mobile.JPG')
-                }
-                }
-            #littleLeo{
-                .project_background{
-                    @include background_img_projects('littleLeo.JPG')
-                }
-            }
+            display: none;
         }
-
+        
         }
 
     footer{
-        height: 50vh;
+        height: 20vh;
         background-color: $col_dark;
         color: $col_light;
         font-family: lemonMilk;
@@ -422,7 +429,7 @@ header{
 
         .copyRight {
             position: relative;
-            top: calc(100% - 10%);
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
