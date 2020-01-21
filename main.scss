@@ -12,6 +12,12 @@ $col_light: #EEEEEE;
 $col_dark: #2E2E2E;
 
 
+// VAR BREAKPOINTS
+
+$dsktp: 1200px;
+$lrg_dsktp: 1660px;
+
+
 // color pallets
 
 $col_A: #B22028;
@@ -330,14 +336,15 @@ header{
                 }
             }
         } 
+
+        // upSkill / upProject - needs to be a better way to solve the scroll up function of this
         .upProject{
-            
-            @include translateUp(-100%);
+            // @include translateUp(-100%);
         }
         .skill{
             animation-fill-mode: forwards;
         } .upSkill {
-            @include translateUp(-200%);
+            // @include translateUp(-200%);
         }
 
         .skills_list{
@@ -388,8 +395,10 @@ header{
         }
         .clients_list_show{
             .client{
+                display: flex;
+                flex-direction: row;
                 @include fade_in_up();
-                height: 20vh;
+                height: 40vh;
                 color: #EEE;
                 a{
                     display: none;
@@ -399,9 +408,26 @@ header{
                 }
                 
             }
+
+            
+
+
             #AWP{
-                @include background_img_clients('awp_dsktp.JPG');
+                .client_img{
+                    @include background_img_clients('awp_dsktp.JPG');
+                    width: 100%;
+                }
+                .client_info{
+                    height: 40vh;
+                    width: 0%;
+                    overflow: hidden;
+                    transform: translateX(100%);
+                    
+                }
+                
             }
+
+
             #KeaTek{
                 @include background_img_clients('keatek_dsktp.JPG');
             }
@@ -436,3 +462,37 @@ header{
     }
     
 
+
+
+    @media (min-width: $dsktp){
+
+
+        .clients_list_show {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .client{
+                width: 25%;
+            }
+        }
+
+        .project {
+            display: flex;
+            flex-direction: row;
+            .project_background{
+                width: 33.3333%;
+            }
+            .project_info{
+                width: 66.66666%;
+            }
+        }
+        
+        section{
+            .skills_list_show{
+                h3{
+                    width: 25%;
+                }
+            }
+        }
+
+    }

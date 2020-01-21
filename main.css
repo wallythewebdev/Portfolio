@@ -176,18 +176,8 @@ section {
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover; }
-  section .upProject {
-    position: relative;
-    transition: 0.5s ease-in-out;
-    transform: translateY(-100%);
-    animation-delay: 1s; }
   section .skill {
     animation-fill-mode: forwards; }
-  section .upSkill {
-    position: relative;
-    transition: 0.5s ease-in-out;
-    transform: translateY(-200%);
-    animation-delay: 1s; }
   section .skills_list {
     opacity: 0;
     height: 0; }
@@ -232,9 +222,11 @@ section {
   section .clients_list {
     display: none; }
   section .clients_list_show .client {
+    display: flex;
+    flex-direction: row;
     animation-fill-mode: forwards;
     animation: fade_in 1.2s ease-in-out;
-    height: 20vh;
+    height: 40vh;
     color: #EEE; }
 @keyframes fade_in {
   0% {
@@ -247,12 +239,18 @@ section {
       display: none; }
     section .clients_list_show .client h3 {
       display: none; }
-  section .clients_list_show #AWP {
+  section .clients_list_show #AWP .client_img {
     background-image: url(img/clients/awp_dsktp.JPG);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 40vh; }
+    height: 40vh;
+    width: 100%; }
+  section .clients_list_show #AWP .client_info {
+    height: 40vh;
+    width: 0%;
+    overflow: hidden;
+    transform: translateX(100%); }
   section .clients_list_show #KeaTek {
     background-image: url(img/clients/keatek_dsktp.JPG);
     background-position: center;
@@ -285,5 +283,24 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); }
+
+@media (min-width: 1200px) {
+  .clients_list_show {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; }
+    .clients_list_show .client {
+      width: 25%; }
+
+  .project {
+    display: flex;
+    flex-direction: row; }
+    .project .project_background {
+      width: 33.3333%; }
+    .project .project_info {
+      width: 66.66666%; }
+
+  section .skills_list_show h3 {
+    width: 25%; } }
 
 /*# sourceMappingURL=main.css.map */

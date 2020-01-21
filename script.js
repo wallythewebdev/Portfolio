@@ -36,19 +36,6 @@ let ui_controlls = (function(){
             document.querySelector('.clients').appendChild(clients[0])
         }
 
-        
-        function cloneSkils(){
-            // get the clietns and clone themm into a variable
-
-            var skill_list = document.querySelectorAll('.skills_list')[0].cloneNode(true)
-
-            skills.push(skill_list);
-
-        }
-
-        function build_skills(){
-            document.querySelector('.skills').appendChild(skills[0]);
-        }
 
         function cloneProjects(){
             // get the clietns and clone themm into a variable
@@ -64,6 +51,19 @@ let ui_controlls = (function(){
 
         function build_projects(){
             document.querySelector('.projects').appendChild(projects[0]);
+        }
+
+        function cloneSkils(){
+            // get the clietns and clone themm into a variable
+
+            var skill_list = document.querySelectorAll('.skills_list')[0].cloneNode(true)
+
+            skills.push(skill_list);
+
+        }
+
+        function build_skills(){
+            document.querySelector('.skills').appendChild(skills[0]);
         }
 
 
@@ -104,7 +104,7 @@ let ui_controlls = (function(){
                         projectSection[0].children[2].remove();
                     };  
                     
-                // var skillsSection = document.querySelectorAll('.skills')
+                var skillsSection = document.querySelectorAll('.skills')
                 if(skillsSection[0].children.length === 3){
                     skillsSection[0].children[2].remove();
                 };  
@@ -187,6 +187,21 @@ const controller = (function(){
                     e.classList.add('exitButton_show')
                 })
                 ui_controlls.pushClients();
+
+                // add event for clicking on client so they scroll out to the side
+
+                var clientList = document.querySelectorAll('.client');
+                clientList.forEach(e=>{
+                    e.addEventListener('click', ()=> {
+                        if(!e.classList.contains('moveLeft')){
+                            e.classList.add('moveLeft');
+                        } else {
+                            e.classList.remove('moveLeft')
+                        }
+                        
+                    })
+
+                })
                 
 
                 setTimeout(function(){
@@ -223,6 +238,8 @@ const controller = (function(){
                 console.log('Clients have been clicked')
             }
             } else if (clickedTarget.classList.contains('skills') || clickParent.classList.contains('skills') || clickParent.parentNode.classList.contains('skills')){
+
+                ui_controlls.pushskills();
 
                 if(clickedTarget.classList.contains('exitButton')){
                     console.log('reset')
@@ -267,6 +284,7 @@ const controller = (function(){
             eventListeners();
             ui_controlls.getElements();
             ui_controlls.getClients();
+            ui_controlls.getskills();
             ui_controlls.getProjects();
             
         }
