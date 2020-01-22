@@ -339,12 +339,12 @@ header{
 
         // upSkill / upProject - needs to be a better way to solve the scroll up function of this
         .upProject{
-            // @include translateUp(-100%);
+            @include translateUp(-100%);
         }
         .skill{
             animation-fill-mode: forwards;
         } .upSkill {
-            // @include translateUp(-200%);
+            @include translateUp(-200%);
         }
 
         .skills_list{
