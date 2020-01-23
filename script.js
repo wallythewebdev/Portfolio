@@ -41,13 +41,26 @@ let alt_UI = (function(){
         adds the _show section to the class list so it is no longer hidden
         appends element to target
 
-    */ 
-    function append_item(element, target){
-        element[0].classList.value+="_show"
-        document.querySelector(target).appendChild(element[0])
-        
-    }
+        -- Bug found -- If element is already open on page and is clicked again it removes 
+        styles for the element - condiation satment to see if the element is already being shown and if so 
+        do thing
 
+    */ 
+    function append_item(element, target, className){
+        // debugger;
+        
+        // if _show is NOT (!) placed on the element then alt the class to show element
+        if(!element[0].classList.contains(className+'_show')){
+            element[0].classList.add(className+'_show')
+            element[0].classList.remove(className)
+
+        // show the exit button on the element perant (target is the parent element)
+        document.querySelector(target).children[0].children[1].classList.add('exitButton_show')
+
+        document.querySelector(target).appendChild(element[0]);
+
+        }
+    }
 
     /*
         @returns viod
@@ -77,18 +90,54 @@ let alt_UI = (function(){
 
     }
 
+    function clearSection(){
+        let section = document.querySelector('section');
+        section.innerHTML="";
+        headersArr[0].forEach(e=>{
+            section.appendChild(e);
+        })
+    }
+
+    function removeSubHeading(parent){
+        // debugger;
+        document.querySelector(`.${parent}`).children[2].classList.value=`${parent}_list`
+        document.querySelector(`.${parent}`).children[2].remove()
+    }
+
     return {
 
         clone_content: function(elementName, storeIn){
             UI_clone_content(elementName, storeIn);
         },
 
-        append_content: function(element, target){
-            append_item(element, target);
+        append_content: function(element, target, className){
+          
+            append_item(element, target, className);
         },
 
-        wipe_content: function(){
+        build_section_headers: function(){
             buildHeadings();
+        },
+
+        clearSection: function(){
+            clearSection();
+        },
+
+        exitEvent: function(parent){
+            removeSubHeading(parent);
+        },
+
+        addExitEvent: function(){
+            document.querySelectorAll('.exitButton').forEach(e=>{
+                e.addEventListener('click', (e)=>{
+                    // parent = .clients / .projects / .skills
+                    let parent = e.target.parentNode.parentNode.classList[0]
+                    // document.querySelector(`.${parent}_list_show`).classList.value=`${parent}_list`;
+                    alt_UI.exitEvent(parent);
+
+                    e.target.classList.remove('exitButton_show')
+                })
+            })
         }
 
     }
@@ -104,10 +153,23 @@ const controller = (function(){
 
 
     function clickEvents(){
-        document.addEventListener('click', headingSelector)
+        // click event for the sub headings to be loaded in
+        document.addEventListener('click', e=>{
+            /*
+                Below code is the result of following the trail of possible outcomes
+                turnery op checks if any button on the doc is clicked appart from the 
+                exit button - this allows the exit button to function without starting =
+                a loop - 
+            */ 
+            let check; 
+            check = e.target.classList[0] != 'exitButton';
+            check ? headingSelector(e) : null;
+        })
     }
 
     function headingSelector(event){
+        // debugger;
+        
 
         let target, clients, projects, skills, exitButton;
         
@@ -117,9 +179,23 @@ const controller = (function(){
         projects = target.parentNode.classList.contains('projects') || target.parentNode.parentNode.classList.contains('projects');
         skills = target.parentNode.classList.contains('skills') || target.parentNode.parentNode.classList.contains('skills');
 
-        clients ? alt_UI.append_content(clientsArr, '.clients') : null; 
-        projects ? alt_UI.append_content(projectsArr, '.projects'): null;
-        skills ? alt_UI.append_content(skillsArr, '.skills'): null;
+        /*
+            1) add in the clients by appending them to the clients DIV
+            2) add event listener to each of the clients children to animate them when clicked on
+
+            2) is depending on 1) to be run first as 1) created the node list for 2) to accsess
+        */ 
+        clients ? (alt_UI.append_content(clientsArr, '.clients', 'clients_list'), // <<< 1)
+        clientEventListener()) // <<< 2)
+        : null; 
+
+        projects ? (alt_UI.clearSection(),
+        alt_UI.append_content(projectsArr, '.projects', 'project_list')) :
+        null;
+
+        skills ? (alt_UI.clearSection(),
+        alt_UI.append_content(skillsArr, '.skills', 'skills_list')): 
+        null;
         
     }
    
@@ -134,10 +210,14 @@ const controller = (function(){
             alt_UI.clone_content('.clients_list', clientsArr);
             alt_UI.clone_content('.project_list', projectsArr);
             alt_UI.clone_content('.skills_list', skillsArr);
+
+            
             
             // wipe section
-            alt_UI.wipe_content();
-            
+            alt_UI.build_section_headers();
+            // add ExitClickEvent
+
+            alt_UI.addExitEvent();
         }
     }
 
