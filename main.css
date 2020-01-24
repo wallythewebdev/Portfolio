@@ -237,7 +237,8 @@ section {
     animation-fill-mode: forwards;
     animation: fade_in 1.2s ease-in-out;
     height: 40vh;
-    color: #EEE; }
+    color: #EEE;
+    position: relative; }
 @keyframes fade_in {
   0% {
     opacity: 0;
@@ -245,35 +246,73 @@ section {
   100% {
     opacity: 1;
     transform: translateY(0%, -50%); } }
-    section .clients_list_show .client a {
-      display: none; }
-    section .clients_list_show .client h3 {
-      display: none; }
+    section .clients_list_show .client .client_img {
+      position: absolute;
+      width: 100%; }
+    section .clients_list_show .client .client_info {
+      position: absolute;
+      width: 100%;
+      transform: translateX(100%);
+      transition: 0.4s ease-in-out;
+      z-index: 23;
+      height: 40vh;
+      background-color: rgba(0, 0, 0, 0.8); }
+      section .clients_list_show .client .client_info h3 {
+        font-size: 2rem;
+        background: #EEEEEE;
+        margin: 0;
+        padding: 20px;
+        color: #2E2E2E; }
+      section .clients_list_show .client .client_info ul {
+        display: flex;
+        list-style: none;
+        flex-wrap: wrap; }
+        section .clients_list_show .client .client_info ul li {
+          padding-left: 20px;
+          font-size: 2rem; }
+      section .clients_list_show .client .client_info .client_into_bottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-content: center;
+        align-items: center;
+        width: 100%;
+        background: #EEE;
+        height: 100%; }
+        section .clients_list_show .client .client_info .client_into_bottom a {
+          color: #2E2E2E;
+          font-size: 1.5rem; }
+          section .clients_list_show .client .client_info .client_into_bottom a:visited {
+            color: #2E2E2E; }
+        section .clients_list_show .client .client_info .client_into_bottom .client_info_exitButton {
+          width: 50%;
+          background-image: url(img/icons/backButton.png);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 25%;
+          height: 100%;
+          transform: rotate(180deg); }
+    section .clients_list_show .client .client_info_show {
+      transform: translateX(0%); }
   section .clients_list_show #AWP .client_img {
     background-image: url(img/clients/awp_dsktp.JPG);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 40vh;
-    width: 100%; }
-  section .clients_list_show #AWP .client_info {
-    height: 40vh;
-    width: 0%;
-    overflow: hidden;
-    transform: translateX(100%); }
-  section .clients_list_show #KeaTek {
+    height: 40vh; }
+  section .clients_list_show #KeaTek .client_img {
     background-image: url(img/clients/keatek_dsktp.JPG);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 40vh; }
-  section .clients_list_show #MrNobodies {
+  section .clients_list_show #MrNobodies .client_img {
     background-image: url(img/clients/nobodies_dsktp.JPG);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 40vh; }
-  section .clients_list_show #trippy {
+  section .clients_list_show #trippy .client_img {
     background-image: url(img/clients/trippy_dsktp.JPG);
     background-position: center;
     background-repeat: no-repeat;
@@ -295,21 +334,32 @@ footer {
     transform: translate(-50%, -50%); }
 
 @media (min-width: 1200px) {
-  .clients_list_show {
+  section .clients_list_show {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; }
-    .clients_list_show .client {
+    section .clients_list_show .client {
       width: 25%; }
-
-  .project {
-    display: flex;
-    flex-direction: row; }
-    .project .project_background {
-      width: 33.3333%; }
-    .project .project_info {
-      width: 66.66666%; }
-
+      section .clients_list_show .client .client_info {
+        transform: translateY(100%);
+        z-index: 2; }
+        section .clients_list_show .client .client_info .client_into_bottom .client_info_exitButton {
+          transform: rotate(-90deg); }
+      section .clients_list_show .client .client_info_show {
+        transform: translateY(0%); }
+  section .projects {
+    z-index: 3; }
+    section .projects .project {
+      display: flex;
+      flex-direction: row; }
+      section .projects .project .project_background {
+        width: 33.3333%; }
+      section .projects .project .project_info {
+        width: 66.66666%;
+        padding: 0% 10%; }
+  section .skills {
+    z-index: 3;
+    background: #eee; }
   section .skills_list_show h3 {
     width: 25%; } }
 

@@ -100,8 +100,20 @@ let alt_UI = (function(){
 
     function removeSubHeading(parent){
         // debugger;
-        document.querySelector(`.${parent}`).children[2].classList.value=`${parent}_list`
-        document.querySelector(`.${parent}`).children[2].remove()
+        document.querySelector(`.${parent}`).children[2].classList.value=`${parent}_list`;
+        document.querySelector(`.${parent}`).children[2].remove();
+    }
+
+    function move_el_to_left(){
+        // debugger;
+
+        clients = document.querySelectorAll('.client')
+        
+        clients.forEach(e=>{
+            e.addEventListener('click', e=>{
+                e.target.parentNode.children[1].classList.add('client_info_show');
+            })
+        })
     }
 
     return {
@@ -138,6 +150,18 @@ let alt_UI = (function(){
                     e.target.classList.remove('exitButton_show')
                 })
             })
+        },
+
+        slide_in_element: function(){
+            move_el_to_left()
+        },
+
+        slide_out_element: function(){
+            document.querySelectorAll('.client_info_exitButton').forEach(e=>{
+                e.addEventListener('click', e=>{
+                    e.target.closest('.client_info').classList.remove('client_info_show')
+                })
+            })
         }
 
     }
@@ -162,8 +186,8 @@ const controller = (function(){
                 a loop - 
             */ 
             let check; 
-            check = e.target.classList[0] != 'exitButton';
-            check ? headingSelector(e) : null;
+            check = e.target.classList[0] != 'exitButton'; // <<< if click is not on exit then run 1)
+            check ? headingSelector(e) : null; // <<< 1) 
         })
     }
 
@@ -186,7 +210,8 @@ const controller = (function(){
             2) is depending on 1) to be run first as 1) created the node list for 2) to accsess
         */ 
         clients ? (alt_UI.append_content(clientsArr, '.clients', 'clients_list'), // <<< 1)
-        clientEventListener()) // <<< 2)
+        alt_UI.slide_in_element(), // <<< 2)
+        alt_UI.slide_out_element()) 
         : null; 
 
         projects ? (alt_UI.clearSection(),

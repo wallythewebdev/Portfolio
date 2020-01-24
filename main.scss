@@ -400,11 +400,73 @@ header{
                 @include fade_in_up();
                 height: 40vh;
                 color: #EEE;
+                position: relative;
                 a{
-                    display: none;
+                    // display: none;
                 }
                 h3{
-                    display: none;
+                    // display: none;
+                }
+                .client_img{
+                    position: absolute;
+                    width: 100%;
+                }
+                .client_info{
+                    position: absolute;
+                    width: 100%;
+                    transform: translateX(100%);
+                    transition: 0.4s ease-in-out;
+                    z-index: 23;
+                    height: 40vh;
+                    background-color: rgba(0,0,0,0.8);
+                    h3 {
+                        font-size: 2rem;
+                        background: $col_light;
+                        margin: 0;
+                        padding: 20px;
+                        color: $col_dark;
+                    }
+                    ul{
+                        display: flex;
+                        list-style: none;
+                        flex-wrap: wrap;
+                        li {
+                            padding-left: 20px;
+                            font-size: 2rem;
+                        }
+                    }
+                    .client_into_bottom{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-evenly;
+                        align-content: center;
+                        align-items: center;
+                        width: 100%;
+                        background: #EEE;
+                        height: 100%;
+                        a{
+                            color: $col_dark;
+                            font-size: 1.5rem;
+                            
+                            &:visited{
+                                color: $col_dark;
+                            }
+                        }
+                        .client_info_exitButton{
+                            width: 50%;
+                            
+                            background-image: url(img/icons/backButton.png);
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: 25%;
+                            height: 100%;
+                            transform: rotate(180deg);
+                        }
+                    }
+                    
+                }
+                .client_info_show{
+                    transform: translateX(0%);
                 }
                 
             }
@@ -413,29 +475,24 @@ header{
 
 
             #AWP{
-                .client_img{
-                    @include background_img_clients('awp_dsktp.JPG');
-                    width: 100%;
-                }
-                .client_info{
-                    height: 40vh;
-                    width: 0%;
-                    overflow: hidden;
-                    transform: translateX(100%);
-                    
-                }
-                
+                    .client_img{
+                        @include background_img_clients('awp_dsktp.JPG');
+                    };
             }
-
-
             #KeaTek{
+                .client_img{
                 @include background_img_clients('keatek_dsktp.JPG');
+                }
             }
             #MrNobodies{
+                .client_img{
                 @include background_img_clients('nobodies_dsktp.JPG');
+                }
             }
             #trippy{
+                .client_img{
                 @include background_img_clients('trippy_dsktp.JPG');
+                }
             }
         }
 
@@ -466,33 +523,51 @@ header{
 
     @media (min-width: $dsktp){
 
-
+        section{
         .clients_list_show {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             .client{
                 width: 25%;
-            }
-        }
+                .client_info{
+                    transform: translateY(100%);
+                    z-index: 2;
 
-        .project {
-            display: flex;
-            flex-direction: row;
-            .project_background{
-                width: 33.3333%;
-            }
-            .project_info{
-                width: 66.66666%;
-            }
-        }
-        
-        section{
-            .skills_list_show{
-                h3{
-                    width: 25%;
+                    .client_into_bottom{
+                        .client_info_exitButton{
+                            transform: rotate(-90deg);
+                        }
+                    }
+                }
+                .client_info_show{
+                    transform: translateY(0%);
                 }
             }
         }
-
+        .projects{
+            z-index: 3;
+            .project {
+                display: flex;
+                flex-direction: row;
+                .project_background{
+                    width: 33.3333%;
+                    
+                }
+                .project_info{
+                    width: 66.66666%;
+                    padding: 0% 10%;
+                }
+        }
+        }
+        .skills{
+            z-index: 3;
+            background: #eee;
+        }
+        .skills_list_show{
+            h3{
+                width: 25%;
+            }
+        }
+    }
     }
