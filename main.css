@@ -170,12 +170,14 @@ section {
         background-image: url(img/projects/notables_mobile.JPG);
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover; }
+        background-size: cover;
+        background-size: contain; }
       section .projects .project_list_show #littleLeo .project_background {
         background-image: url(img/projects/littleLeo.JPG);
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover; }
+        background-size: cover;
+        background-size: contain; }
   section .upProject {
     position: relative;
     transition: 0.5s ease-in-out;

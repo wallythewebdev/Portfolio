@@ -326,12 +326,14 @@ header{
                 }
                 #notables{
                     .project_background{
-                        @include background_img_projects('notables_mobile.JPG')
+                        @include background_img_projects('notables_mobile.JPG');
+                        background-size: contain
                     }
                     }
                 #littleLeo{
                     .project_background{
-                        @include background_img_projects('littleLeo.JPG')
+                        @include background_img_projects('littleLeo.JPG');
+                        background-size: contain
                     }
                 }
             }
