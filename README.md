@@ -5,6 +5,6 @@ Web Projects and general creative insanity
 
 Thank you for taking a look at my work, you can see the site here:
 
-**[wallythewebdev](wallythewebdev.com)**
+**[wallythewebdev](http://wallythewebdev.com/)**
 
 This is an account of the clients I have worked with and projects I have worked on. 
