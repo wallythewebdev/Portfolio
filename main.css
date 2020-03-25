@@ -92,7 +92,6 @@ section {
   section div {
     display: flex;
     flex-direction: column;
-    max-height: 2000px;
     height: 33.3333%;
     position: relative; }
     section div h2 {
@@ -174,6 +173,18 @@ section {
         background-size: contain; }
       section .projects .project_list_show #littleLeo .project_background {
         background-image: url(img/projects/littleLeo.JPG);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-size: contain; }
+      section .projects .project_list_show #weatherApp .project_background {
+        background-image: url(img/projects/weatherApp.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-size: contain; }
+      section .projects .project_list_show #youzThatPokemon .project_background {
+        background-image: url(img/projects/youzThatPokemon.jpg);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;

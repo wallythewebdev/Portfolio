@@ -216,7 +216,7 @@ header{
         position: relative;
         div{
             @include column;
-            max-height: 2000px;
+            // max-height: 2000px; << not sure why this is here any more was causing an issue so was removed
             height: 33.3333%;
             position: relative;
             h2{
@@ -336,6 +336,18 @@ header{
                         background-size: contain
                     }
                 }
+                #weatherApp{
+                    .project_background{
+                        @include background_img_projects('weatherApp.jpg');
+                        background-size: contain
+                    }
+                }
+                #youzThatPokemon{
+                    .project_background{
+                        @include background_img_projects('youzThatPokemon.jpg');
+                        background-size: contain
+                    }
+                }
             }
         } 
 
@@ -370,7 +382,7 @@ header{
                 text-align: center;
                 font-size: 2.5rem;
                 color: #EEE;
-                &:nth-child(1){
+                &:nth-child(1){ // <<<< this should be wrote as a function in sass if possible
                     background-color: $col_A;
                 }
                 &:nth-child(2){
